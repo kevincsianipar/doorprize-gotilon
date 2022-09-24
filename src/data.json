@@ -1,0 +1,21 @@
+{
+    "selectedNumber": [],
+    "round": {
+        "1": {
+            "usedNumbers": [],
+            "confirmedWinners": []
+        },
+        "2": {
+            "usedNumbers": [],
+            "confirmedWinners": []
+        },
+        "3": {
+            "usedNumbers": [],
+            "confirmedWinners": []
+        },
+        "4": {
+            "usedNumbers": [],
+            "confirmedWinners": []
+        }
+    }
+}
