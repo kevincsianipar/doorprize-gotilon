@@ -192,15 +192,23 @@ const App = () => {
           <Row gutter={16} type="flex" justify="center" align="top">
             <Col>
               <Button
+                size={"large"}
+                type="primary"
                 onClick={handleClickGetNumber}
                 disabled={num > 0 ||
-                  winnerByCategory[selectedCategory] && 
-                  (winnerByCategory[selectedCategory].length  >= categoryOptions.find(o => o.value === selectedCategory).picks)}>
+                  winnerByCategory[selectedCategory] &&
+                  (winnerByCategory[selectedCategory].length >= categoryOptions.find(o => o.value === selectedCategory).picks)}>
                 Ambil Nomor
               </Button>
             </Col>
             <Col>
-              <Button onClick={handleClickReset} type="danger" disabled={!enableReset}>Reset</Button>
+              <Button
+                size={"large"}
+                onClick={handleClickReset}
+                type="danger"
+                disabled={!enableReset}>
+                Reset
+              </Button>
             </Col>
           </Row>
 
