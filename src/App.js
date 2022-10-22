@@ -1,21 +1,27 @@
 import "antd/dist/antd.css";
-import React, { useState } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import { Layout, Menu, Card, Row, Col, Select } from 'antd';
 
 const App = () => {
-  let jsonData = require('./data.json');
-
   const { Header, Content, Footer } = Layout;
   const { Option } = Select;
-  const initialValue = jsonData.selectedNumber;
+  const initialValue =  localStorage.getItem('takenNumber') && JSON.parse(localStorage.getItem('takenNumber')) || [];
+  const initialValueCategory =  localStorage.getItem('winnerByCategory') && JSON.parse(localStorage.getItem('winnerByCategory')) || [];
+  const initialCategory = 'hiburan1'
 
   const [num, setNum] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedNumber, setSelectedNumber] = useState(initialValue);
+  const [takenNumber, setTakenNumber] = useState(initialValue);
+  const [winnerByCategory, setWinnerByCategory] = useState(initialValueCategory);
+
+  useEffect(() => {
+    localStorage.setItem('takenNumber', JSON.stringify(takenNumber));
+  }, [takenNumber]);
+
+  useEffect(() => {
+    localStorage.setItem('winnerByCategory', JSON.stringify(winnerByCategory));
+  }, [winnerByCategory]);
 
   function getRandomWithManyExclusions(min, max, arrayOfIndexesToExclude) {
     var rand = null;
@@ -25,20 +31,14 @@ const App = () => {
         rand = Math.floor(Math.random() * (max - min + 1)) + min;
       }
       setSelectedNumber([rand, ...selectedNumber])
-      jsonData.selectedNumber.push(rand);
-    }
-
-    const newData = JSON.stringify(jsonData)
-    console.log(newData);
-
-    const fs = require("browserify-fs")
-    fs.writeFile("./data.json", newData, err => {
-      if (err) {
-        console.log("Error writing file", err)
-      } else {
-        console.log('JSON data is written to the file successfully')
+      setTakenNumber([rand, ...takenNumber])
+      let appendedList = [];
+      if (winnerByCategory[selectedCategory]){
+        appendedList= winnerByCategory[selectedCategory]
       }
-    })
+      let newObj = { ...winnerByCategory, [selectedCategory]: [rand, ...appendedList]};
+      setWinnerByCategory(newObj)
+    }
     return rand;
   }
 
@@ -52,10 +52,8 @@ const App = () => {
   };
 
   function handleChange(value) {
-    console.log(`selected ${value}`);
+    setSelectedCategory(value);
   }
-
-
 
   return (
     <Layout>
@@ -76,25 +74,39 @@ const App = () => {
       </Header>
       <Content className="site-layout" size='large' style={{ padding: '0 50px', marginTop: 100 }}>
         <div className="site-layout-background" style={{ padding: 24, height: 'calc(100vh - 100px)' }}>
-          <h1>Kategori :
-            <Select defaultValue="hiburan1" style={{ width: 180, marginLeft: 12 }} onChange={handleChange}>
-              <Option value="hiburan1">Hadiah Hiburan 1</Option>
-              <Option value="hiburan2">Hadiah Hiburan 2</Option>
-              <Option value="hiburan3">Hadiah Hiburan 3</Option>
-              <Option value="hiburan4">Hadiah Hiburan 4</Option>
-              <Option value="hiburan5">Hadiah Hiburan 5</Option>
-              <Option value="hiburan6">Hadiah Hiburan 6</Option>
-              <Option value="utama3">Hadiah Utama 3</Option>
-              <Option value="utama2">Hadiah Utama 2</Option>
-              <Option value="utama1">Hadiah Utama 1</Option>
-            </Select>
-          </h1>
-          <h2>number is: {num}</h2>
+          <Row>
+            <Col span={6}>
+              <h1>Kategori :
+                <Select defaultValue="hiburan1" style={{ width: 180, marginLeft: 12 }} onChange={handleChange}>
+                  <Option value="hiburan1">Hadiah Hiburan 1</Option>
+                  <Option value="hiburan2">Hadiah Hiburan 2</Option>
+                  <Option value="hiburan3">Hadiah Hiburan 3</Option>
+                  <Option value="hiburan4">Hadiah Hiburan 4</Option>
+                  <Option value="hiburan5">Hadiah Hiburan 5</Option>
+                  <Option value="hiburan6">Hadiah Hiburan 6</Option>
+                  <Option value="utama3">Hadiah Utama 3</Option>
+                  <Option value="utama2">Hadiah Utama 2</Option>
+                  <Option value="utama1">Hadiah Utama 1</Option>
+                </Select>
+              </h1>
+            </Col>
+            <Col span={8}>
+              <h1>Jumlah Pengambilan : </h1>
+            </Col>
+          </Row>
+          
+          <h2>Kupon Terpilih: {num}</h2>
           <button onClick={handleClick}>Ambil Nomor</button>
-          {selectedNumber.map(value =>
-            <Card style={{ width: 'auto', height: 'auto', padding: 12 }}>
-              <h2>{renderCouponNumber(value)}</h2>
-            </Card>)}
+          <Row>
+            {winnerByCategory[selectedCategory] && winnerByCategory[selectedCategory].map(value =>
+              <Col style={{display: 'flex', paddingBottom: 6, paddingTop: 6, paddingRight: 6, flexDirection: 'row'}}>
+                <Card style={{ width: 120, height: 80, padding: 0 }}>
+                  <h1 padding={0}>{renderCouponNumber(value)}</h1>
+                </Card>
+              </Col>
+            )}
+          </Row>
+          
         </div>
       </Content>
     </Layout>
