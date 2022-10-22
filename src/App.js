@@ -5,8 +5,8 @@ import { Layout, Menu, Card, Row, Col, Select } from 'antd';
 const App = () => {
   const { Header, Content, Footer } = Layout;
   const { Option } = Select;
-  const initialValue =  localStorage.getItem('takenNumber') && JSON.parse(localStorage.getItem('takenNumber')) || [];
-  const initialValueCategory =  localStorage.getItem('winnerByCategory') && JSON.parse(localStorage.getItem('winnerByCategory')) || [];
+  const initialValue =  (localStorage.getItem('takenNumber') && JSON.parse(localStorage.getItem('takenNumber'))) || [];
+  const initialValueCategory =  (localStorage.getItem('winnerByCategory') && JSON.parse(localStorage.getItem('winnerByCategory'))) || [];
   const initialCategory = 'hiburan1'
 
   const [num, setNum] = useState(0);
@@ -52,6 +52,7 @@ const App = () => {
   };
 
   function handleChange(value) {
+    setNum(0);
     setSelectedCategory(value);
   }
 
@@ -95,7 +96,7 @@ const App = () => {
             </Col>
           </Row>
           
-          <h2>Kupon Terpilih: {num}</h2>
+          <h1 style={{fontSize: 36}}>Kupon Terpilih: {renderCouponNumber(num)}</h1>
           <button onClick={handleClick}>Ambil Nomor</button>
           <Row>
             {winnerByCategory[selectedCategory] && winnerByCategory[selectedCategory].map(value =>
