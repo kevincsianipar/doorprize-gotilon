@@ -195,7 +195,7 @@ const App = () => {
                 onClick={handleClickGetNumber}
                 disabled={num > 0 ||
                   winnerByCategory[selectedCategory] && 
-                  (winnerByCategory[selectedCategory]  > categoryOptions.find(o => o.value === selectedCategory).picks)}>
+                  (winnerByCategory[selectedCategory].length  >= categoryOptions.find(o => o.value === selectedCategory).picks)}>
                 Ambil Nomor
               </Button>
             </Col>
