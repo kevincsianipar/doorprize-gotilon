@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { Layout, Button, Card, Row, Col, Select } from 'antd';
 import {
   CloseCircleTwoTone,
+  CheckCircleTwoTone,
+  LeftSquareTwoTone,
 } from '@ant-design/icons';
 import { Space } from 'antd';
 
@@ -12,6 +14,7 @@ const App = () => {
   const { Option } = Select;
   const initialValue = (localStorage.getItem('takenNumber') && JSON.parse(localStorage.getItem('takenNumber'))) || [];
   const initialValueCategory = (localStorage.getItem('winnerByCategory') && JSON.parse(localStorage.getItem('winnerByCategory'))) || [];
+  const initialValueConfirmedWinner = (localStorage.getItem('confirmedWinnerList') && JSON.parse(localStorage.getItem('confirmedWinnerList'))) || [];
   const initialCategory = 'hiburan1';
   const categoryOptions = [
     {
@@ -52,6 +55,7 @@ const App = () => {
   const [takenNumber, setTakenNumber] = useState(initialValue);
   const [winnerByCategory, setWinnerByCategory] = useState(initialValueCategory);
   const [enableReset, setEnableReset] = useState(false);
+  const [confirmedWinnerList, setConfirmedWinnerList] = useState(initialValueConfirmedWinner);
 
   useEffect(() => {
     localStorage.setItem('takenNumber', JSON.stringify(takenNumber));
@@ -60,6 +64,11 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('winnerByCategory', JSON.stringify(winnerByCategory));
   }, [winnerByCategory]);
+
+  useEffect(() => {
+    localStorage.setItem('confirmedWinnerList', JSON.stringify(confirmedWinnerList));
+  }, [confirmedWinnerList]);
+
 
   function getRandomWithManyExclusions(min, max, arrayOfIndexesToExclude) {
     var rand = null;
@@ -108,9 +117,18 @@ const App = () => {
   const handleRemoveNumber = value => {
     let list = winnerByCategory[selectedCategory]
     list = list.filter(item => item !== value)
-    console.log(value, list)
     let newObj = { ...winnerByCategory, [selectedCategory]: list };
     setWinnerByCategory(newObj)
+  }
+
+  const handleConfirmWinner = value => {
+    setConfirmedWinnerList([...confirmedWinnerList, value])
+  }
+
+  const handleRemoveConfirmedWinner = value => {
+    let list = confirmedWinnerList;
+    list = list.filter(item => item !== value)
+    setConfirmedWinnerList(list)
   }
 
   return (
@@ -212,16 +230,32 @@ const App = () => {
             </Col>
           </Row>
           <Row>
-            <h1 style={{ paddingTop: 24}}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
+            <h1 style={{ paddingTop: 24 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
           </Row>
           <Row type="flex" justify="center" align="top">
             {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
               <Col style={{ display: 'flex', paddingTop: 8, paddingRight: 8, flexDirection: 'row' }}>
-                <Card style={{ width: 140, height: 90, padding: 0 }}>
-                  <div class="iconRemove" onClick={() => handleRemoveNumber(value)} style={{ position: "absolute", top: 0, right: 4 }}>
-                    <CloseCircleTwoTone twoToneColor="#eb2f96" />
-                  </div>
-                  <h1 padding={0} style={{ fontSize: 32, marginLeft: -8, marginTop: -8 }}>{renderCouponNumber(value)}</h1>
+                <Card style={{ width: 150, height: 90, padding: 0 }}>
+                  {!confirmedWinnerList.includes(value) &&
+                    <div class="actionIcon" onClick={() => handleConfirmWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
+                      <CheckCircleTwoTone twoToneColor="#52c41a" />
+                    </div>
+                  }
+                  {confirmedWinnerList.includes(value) &&
+                    <div class="actionIcon" onClick={() => handleRemoveConfirmedWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
+                      <LeftSquareTwoTone twoToneColor="grey" />
+                    </div>
+                  }
+                  {!confirmedWinnerList.includes(value) &&
+                    <div class="actionIcon" onClick={() => handleRemoveNumber(value)} style={{ position: "absolute", top: 0, right: 4 }}>
+                      <CloseCircleTwoTone twoToneColor="#eb2f96" />
+                    </div>
+                  }
+                  <h1
+                    padding={0}
+                    style={{ fontSize: 36, marginLeft: -8, marginTop: -8, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
+                    {renderCouponNumber(value)}
+                  </h1>
                 </Card>
               </Col>
             )}
