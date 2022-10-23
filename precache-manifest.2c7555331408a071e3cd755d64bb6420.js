@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "91451de123b36667d5dd",
-    "url": "/doorprize-randomizer/static/css/main.d8966daf.chunk.css"
+    "revision": "c21b7104811aaab10eae",
+    "url": "/doorprize-randomizer/static/css/main.8f82611e.chunk.css"
   },
   {
-    "revision": "91451de123b36667d5dd",
-    "url": "/doorprize-randomizer/static/js/main.91451de1.chunk.js"
+    "revision": "c21b7104811aaab10eae",
+    "url": "/doorprize-randomizer/static/js/main.c21b7104.chunk.js"
   },
   {
     "revision": "f396410328fc823aed37",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/doorprize-randomizer/static/media/logohkbp.dfcdb3a3.png"
   },
   {
-    "revision": "dd77a6bd088844de0620e1b42e912f80",
+    "revision": "39268a3786dc9ba0e47c69da7cd26320",
     "url": "/doorprize-randomizer/index.html"
   }
 ];
