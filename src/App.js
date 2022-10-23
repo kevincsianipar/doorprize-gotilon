@@ -17,17 +17,17 @@ const App = () => {
     {
       text: "Hadiah Hiburan 1",
       value: "hiburan1",
-      picks: 6
+      picks: 10
     },
     {
       text: "Hadiah Hiburan 2",
       value: "hiburan2",
-      picks: 6
+      picks: 10
     },
     {
       text: "Hadiah Hiburan 3",
       value: "hiburan3",
-      picks: 6
+      picks: 10
     },
     {
       text: "Hadiah Utama 3",
@@ -143,7 +143,7 @@ const App = () => {
             <h1>Jumlah Pengambilan : {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
           </Row>
           <Row type="flex" justify="center" align="top">
-            <h1 style={{ fontSize: 36 }}>Kupon Terpilih:</h1>
+            <h1 style={{ fontSize: 32 }}>Kupon Terpilih:</h1>
           </Row>
           {num > 0 && (
             <div class="numbers">
@@ -211,15 +211,17 @@ const App = () => {
               </Button>
             </Col>
           </Row>
-
           <Row>
+            <h1 style={{ paddingTop: 24}}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
+          </Row>
+          <Row type="flex" justify="center" align="top">
             {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
-              <Col style={{ display: 'flex', paddingTop: 24, paddingRight: 12, flexDirection: 'row' }}>
-                <Card style={{ width: 160, height: 100, padding: 0 }}>
+              <Col style={{ display: 'flex', paddingTop: 8, paddingRight: 8, flexDirection: 'row' }}>
+                <Card style={{ width: 140, height: 90, padding: 0 }}>
                   <div class="iconRemove" onClick={() => handleRemoveNumber(value)} style={{ position: "absolute", top: 0, right: 4 }}>
                     <CloseCircleTwoTone twoToneColor="#eb2f96" />
                   </div>
-                  <h1 padding={0} style={{ fontSize: 32 }}>{renderCouponNumber(value)}</h1>
+                  <h1 padding={0} style={{ fontSize: 32, marginLeft: -8, marginTop: -8 }}>{renderCouponNumber(value)}</h1>
                 </Card>
               </Col>
             )}
