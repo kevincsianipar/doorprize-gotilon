@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "c300abb0b8cbfb5242f3",
-    "url": "/doorprize-randomizer/static/css/main.4770df0f.chunk.css"
+    "revision": "91451de123b36667d5dd",
+    "url": "/doorprize-randomizer/static/css/main.d8966daf.chunk.css"
   },
   {
-    "revision": "c300abb0b8cbfb5242f3",
-    "url": "/doorprize-randomizer/static/js/main.c300abb0.chunk.js"
+    "revision": "91451de123b36667d5dd",
+    "url": "/doorprize-randomizer/static/js/main.91451de1.chunk.js"
   },
   {
     "revision": "f396410328fc823aed37",
     "url": "/doorprize-randomizer/static/js/1.f3964103.chunk.js"
   },
   {
-    "revision": "0f7fc9e36c099f04358b",
+    "revision": "ab30241985128caf6386",
     "url": "/doorprize-randomizer/static/css/2.e91112bf.chunk.css"
   },
   {
-    "revision": "0f7fc9e36c099f04358b",
-    "url": "/doorprize-randomizer/static/js/2.0f7fc9e3.chunk.js"
+    "revision": "ab30241985128caf6386",
+    "url": "/doorprize-randomizer/static/js/2.ab302419.chunk.js"
   },
   {
     "revision": "381b3940f97a3c606a4a",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/doorprize-randomizer/static/media/logohkbp.dfcdb3a3.png"
   },
   {
-    "revision": "ecdf7ad5a9a31dcbd3b87f386e677197",
+    "revision": "dd77a6bd088844de0620e1b42e912f80",
     "url": "/doorprize-randomizer/index.html"
   }
 ];
