@@ -229,7 +229,7 @@ const App = () => {
               </Button>
             </Col>
           </Row>
-          <Row>
+          <Row type="flex" justify="center" align="top">
             <h1 style={{ paddingTop: 24 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
           </Row>
           <Row type="flex" justify="center" align="top">
@@ -253,7 +253,7 @@ const App = () => {
                   }
                   <h1
                     padding={0}
-                    style={{ fontSize: 36, marginLeft: -8, marginTop: -8, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
+                    style={{ fontSize: 36, fontWeight: 500, marginLeft: -10, marginTop: -8, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
                     {renderCouponNumber(value)}
                   </h1>
                 </Card>
