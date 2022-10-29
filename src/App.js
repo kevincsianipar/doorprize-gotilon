@@ -90,7 +90,7 @@ const App = () => {
       if (winnerByCategory[selectedCategory]) {
         appendedList = winnerByCategory[selectedCategory]
       }
-      let newObj = { ...winnerByCategory, [selectedCategory]: [rand, ...appendedList] };
+      let newObj = { ...winnerByCategory, [selectedCategory]: [...appendedList, rand] };
       setTimeout(function () {
         setWinnerByCategory(newObj)
       }.bind(this), 6500);
@@ -151,33 +151,36 @@ const App = () => {
     <Layout>
       <Header style={{ position: 'fixed', zIndex: 1, height: 100, width: '100%', backgroundColor: 'white' }}>
         <Row className="logo">
-          <Col span="3">
+          <Col span="1">
             <img src={require('./logohkbp.png')} width={60} />
           </Col>
-          <Col span="18">
-            <h1 style={{ lineHeight: 1.2, textAlign: "center", marginTop: 12 }}>Pengambilan Nomor Kupon Doorprize <br>
-            </br>Pesta Gotilon Tahun Kesehatian dan HUT HKBP Pondok Gede ke-43<br>
-              </br>Minggu 12 November 2022
+          <Col span="22">
+            <h1 style={{ lineHeight: 1.2, textAlign: "center", marginTop: 12 }}>Pengambilan Nomor Kupon Doorprize<br>
+            </br>Tahun Kesehatian dan Pesta Gotilon/HUT ke-43 HKBP Pondok Gede Resort Pondok Gede<br>
+              </br>Minggu 13 November 2022
             </h1>
           </Col>
         </Row>
-        <Col span="3">
+        <Col span="1">
         </Col>
       </Header>
-      <Content className="site-layout" size='large' style={{ padding: '0 50px', marginTop: 100 }}>
+      <Content className="site-layout" size='large' style={{ padding: '0px 50px', marginTop: 100 }}>
         <div className="site-layout-background" style={{ padding: 24, height: 'calc(100vh - 100px)' }}>
-          <Row>
-            <h1>Kategori :
-              <Select defaultValue="hiburan1" style={{ width: 250, marginLeft: 12, fontSize: 24 }} onChange={handleChange}>
-                {categoryOptions.map(cat => <Option value={cat.value}>{cat.text}</Option>)}
-              </Select>
-            </h1>
-          </Row>
-          <Row>
-            <h1>Jumlah Pengambilan : {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
+          <Row gutter={12}>
+            <Col span={12}>
+              <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Kategori :
+                <Select defaultValue="hiburan1" style={{ width: 250, marginLeft: 12, fontSize: 24 }} onChange={handleChange}>
+                  {categoryOptions.map(cat => <Option value={cat.value} style={{fontWeight: 600}}>{cat.text}</Option>)}
+                </Select>
+              </h1>
+            </Col>
+            <Col span={12} style={{ textAlign: 'right', paddingTop: 4}}>
+              <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Jumlah Pengambilan : 
+              {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
+            </Col>
           </Row>
           <Row type="flex" justify="center" align="top">
-            <h1 style={{ fontSize: 32 }}>Kupon Terpilih:</h1>
+            <h1 style={{ fontSize: 26, lineHeight: 0.8, padding: 4 }}>Nomor Terpilih:</h1>
           </Row>
           {num > 0 && (
             <div class="numbers">
@@ -233,7 +236,7 @@ const App = () => {
                 disabled={num > 0 ||
                   winnerByCategory[selectedCategory] &&
                   (winnerByCategory[selectedCategory].length >= categoryOptions.find(o => o.value === selectedCategory).picks)}>
-                Ambil Nomor
+                Ambil Nomor (↵)
               </Button>
             </Col>
             <Col>
@@ -243,17 +246,17 @@ const App = () => {
                 onClick={handleClickReset}
                 type="danger"
                 disabled={!enableReset}>
-                Reset
+                Reset (R)
               </Button>
             </Col>
           </Row>
           <Row type="flex" justify="center" align="top">
-            <h1 style={{ paddingTop: 24 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
+            <h1 style={{ paddingTop: 24, fontSize: 26, lineHeight: 0.8 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
           </Row>
           <Row type="flex" justify="center" align="top">
             {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
-              <Col style={{ display: 'flex', paddingTop: 8, paddingRight: 8, flexDirection: 'row' }}>
-                <Card style={{ width: 150, height: 90, padding: 0 }}>
+              <Col style={{ display: 'flex', paddingTop: 12, paddingRight: 18, flexDirection: 'row' }}>
+                <Card style={{ width: 150, height: 75, padding: 0 }}>
                   {!confirmedWinnerList.includes(value) &&
                     <div class="actionIcon" onClick={() => handleConfirmWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
                       <CheckCircleTwoTone twoToneColor="#52c41a" />
@@ -271,7 +274,7 @@ const App = () => {
                   }
                   <h1
                     padding={0}
-                    style={{ fontSize: 36, fontWeight: 500, marginLeft: -10, marginTop: -8, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
+                    style={{ fontSize: 38, fontWeight: 600, marginLeft: -12, marginTop: -15, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
                     {renderCouponNumber(value)}
                   </h1>
                 </Card>

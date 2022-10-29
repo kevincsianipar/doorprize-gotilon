@@ -23,7 +23,7 @@
 .numbers {
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
-  font-size: 120px;
+  font-size: 110px;
   line-height: 1em;
   text-align: center;
   margin: auto;
@@ -82,4 +82,9 @@
 
 .actionIcon {
  cursor: pointer;
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  padding-right: 18px;
+  font-weight: 600;
 }
