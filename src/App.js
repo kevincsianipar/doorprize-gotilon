@@ -19,17 +19,17 @@ const App = () => {
     {
       text: "Hadiah Hiburan 1",
       value: "hiburan1",
-      picks: 12
+      picks: 10
     },
     {
       text: "Hadiah Hiburan 2",
       value: "hiburan2",
-      picks: 12
+      picks: 10
     },
     {
       text: "Hadiah Hiburan 3",
       value: "hiburan3",
-      picks: 12
+      picks: 10
     },
     {
       text: "Hadiah Hiburan 4",
