@@ -1,13 +1,12 @@
 import "antd/dist/antd.css";
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Layout, Button, Card, Row, Col, Select } from 'antd';
 import {
   CloseCircleTwoTone,
   CheckCircleTwoTone,
   LeftSquareTwoTone,
 } from '@ant-design/icons';
-import { Space } from 'antd';
 
 const App = () => {
   const { Header, Content, Footer } = Layout;
@@ -33,6 +32,11 @@ const App = () => {
       picks: 10
     },
     {
+      text: "Hadiah Hiburan 4",
+      value: "hiburan4",
+      picks: 10
+    },
+    {
       text: "Hadiah Utama 3",
       value: "utama3",
       picks: 3
@@ -40,7 +44,7 @@ const App = () => {
     {
       text: "Hadiah Utama 2",
       value: "utama2",
-      picks: 1
+      picks: 2
     },
     {
       text: "Hadiah Utama 1",
@@ -69,6 +73,9 @@ const App = () => {
     localStorage.setItem('confirmedWinnerList', JSON.stringify(confirmedWinnerList));
   }, [confirmedWinnerList]);
 
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress);
+  }, []);
 
   function getRandomWithManyExclusions(min, max, arrayOfIndexesToExclude) {
     var rand = null;
@@ -130,6 +137,15 @@ const App = () => {
     list = list.filter(item => item !== value)
     setConfirmedWinnerList(list)
   }
+
+  const handleKeyPress = event => {
+    if (event.key.toUpperCase() === 'R') {
+      document.getElementById("resetButton").click();
+    }
+    else if (event.key.toUpperCase() === 'ENTER') {
+      document.getElementById("getNumber").click();
+    }
+  };
 
   return (
     <Layout>
@@ -210,6 +226,7 @@ const App = () => {
           <Row gutter={16} type="flex" justify="center" align="top">
             <Col>
               <Button
+                id="getNumber"
                 size={"large"}
                 type="primary"
                 onClick={handleClickGetNumber}
@@ -221,6 +238,7 @@ const App = () => {
             </Col>
             <Col>
               <Button
+                id="resetButton"
                 size={"large"}
                 onClick={handleClickReset}
                 type="danger"
