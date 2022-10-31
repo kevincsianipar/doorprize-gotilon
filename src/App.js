@@ -118,6 +118,7 @@ const App = () => {
 
   function handleChange(value) {
     setNum(0);
+    setEnableReset(false);
     setSelectedCategory(value);
   }
 
@@ -207,22 +208,22 @@ const App = () => {
           {num == 0 && (
             <div class="numbers">
               <span class="numbers__window">
-                <span>0</span>
+                <span class="numbers__window__digit" data-fake="1234567890">0</span>
               </span>
               <span class="numbers__window">
-                <span>0</span>
+                <span class="numbers__window__digit" data-fake="2345678901">0</span>
               </span>
               <span class="numbers__window">
-                <span>0</span>
+                <span class="numbers__window__digit" data-fake="3456789012">0</span>
               </span>
               <span class="numbers__window">
-                <span>0</span>
+                <span class="numbers__window__digit" data-fake="5678901234">0</span>
               </span>
               <span class="numbers__window">
-                <span>0</span>
+                <span class="numbers__window__digit" data-fake="6789012345">0</span>
               </span>
               <span class="numbers__window">
-                <span>0</span>
+                <span class="numbers__window__digit" data-fake="7890123456">0</span>
               </span>
             </div>
           )}
