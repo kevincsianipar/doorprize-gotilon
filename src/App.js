@@ -59,7 +59,7 @@ const App = () => {
   const [takenNumber, setTakenNumber] = useState(initialValue);
   const [winnerByCategory, setWinnerByCategory] = useState(initialValueCategory);
   const [enableReset, setEnableReset] = useState(false);
-  const [blur, setBlur] = useState(true);
+  const [blur, setBlur] = useState(false);
   const [confirmedWinnerList, setConfirmedWinnerList] = useState(initialValueConfirmedWinner);
 
   useEffect(() => {
@@ -115,13 +115,20 @@ const App = () => {
   const handleClickReset = () => {
     setNum(0);
     setEnableReset(false);
-    setBlur(true);
+    if (selectedCategory.includes("utama")) {
+      setBlur(true);
+    }
   };
 
-  function handleChange(value) {
+  function handleChangeCategory(value) {
     setNum(0);
     setEnableReset(false);
     setSelectedCategory(value);
+    if (value.includes("utama")) {
+      setBlur(true);
+    } else {
+      setBlur(false);
+    }
   }
 
   const handleRemoveNumber = value => {
@@ -179,7 +186,7 @@ const App = () => {
           <Row gutter={12}>
             <Col span={12}>
               <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Kategori :
-                <Select defaultValue="hiburan1" style={{ width: 250, marginLeft: 12, fontSize: 24 }} onChange={handleChange}>
+                <Select defaultValue="hiburan1" style={{ width: 250, marginLeft: 12, fontSize: 24 }} onChange={handleChangeCategory}>
                   {categoryOptions.map(cat => <Option value={cat.value} style={{ fontWeight: 600 }}>{cat.text}</Option>)}
                 </Select>
               </h1>
@@ -269,7 +276,7 @@ const App = () => {
                 size={"large"}
                 onClick={handleClickReset}
                 type="danger"
-                disabled={!enableReset}>
+                disabled={!enableReset || blur}>
                 Reset (R)
               </Button>
             </Col>
@@ -280,7 +287,7 @@ const App = () => {
           <Row type="flex" justify="center" align="top">
             {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
               <Col style={{ display: 'flex', paddingTop: 12, paddingRight: 18, flexDirection: 'row' }}>
-                <Card style={{ width: 150, height: 75, padding: 0 }} loading={blur && value===num} >
+                <Card style={{ width: 150, height: 75, padding: 0 }} loading={selectedCategory.includes('utama') && blur && value===num} >
                   {!confirmedWinnerList.includes(value) &&
                     <div class="actionIcon" onClick={() => handleConfirmWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
                       <CheckCircleTwoTone twoToneColor="#52c41a" />
