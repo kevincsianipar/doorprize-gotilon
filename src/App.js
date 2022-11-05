@@ -59,6 +59,7 @@ const App = () => {
   const [takenNumber, setTakenNumber] = useState(initialValue);
   const [winnerByCategory, setWinnerByCategory] = useState(initialValueCategory);
   const [enableReset, setEnableReset] = useState(false);
+  const [blur, setBlur] = useState(true);
   const [confirmedWinnerList, setConfirmedWinnerList] = useState(initialValueConfirmedWinner);
 
   useEffect(() => {
@@ -114,6 +115,7 @@ const App = () => {
   const handleClickReset = () => {
     setNum(0);
     setEnableReset(false);
+    setBlur(true);
   };
 
   function handleChange(value) {
@@ -146,7 +148,14 @@ const App = () => {
     else if (event.key.toUpperCase() === 'ENTER') {
       document.getElementById("getNumber").click();
     }
+    else if (event.key.toUpperCase() === ' ') {
+      document.getElementById("openBlur").click();
+    }
   };
+
+  const handleOpenBlur = () => {
+    setBlur(false);
+  }
 
   return (
     <Layout>
@@ -171,13 +180,13 @@ const App = () => {
             <Col span={12}>
               <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Kategori :
                 <Select defaultValue="hiburan1" style={{ width: 250, marginLeft: 12, fontSize: 24 }} onChange={handleChange}>
-                  {categoryOptions.map(cat => <Option value={cat.value} style={{fontWeight: 600}}>{cat.text}</Option>)}
+                  {categoryOptions.map(cat => <Option value={cat.value} style={{ fontWeight: 600 }}>{cat.text}</Option>)}
                 </Select>
               </h1>
             </Col>
-            <Col span={12} style={{ textAlign: 'right', paddingTop: 4}}>
-              <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Jumlah Pengambilan : 
-              {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
+            <Col span={12} style={{ textAlign: 'right', paddingTop: 4 }}>
+              <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Jumlah Pengambilan :
+                {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
             </Col>
           </Row>
           <Row type="flex" justify="center" align="top">
@@ -203,6 +212,20 @@ const App = () => {
               <span class="numbers__window">
                 <span class="numbers__window__digit numbers__window__digit--5" data-fake="7890123456">{renderCouponNumber(num).toString().charAt(5)}</span>
               </span>
+              {blur && selectedCategory.includes('utama') && (
+                <div class="blur">
+                  <Button
+                    id="openBlur"
+                    disabled={!enableReset}
+                    className="openBlur"
+                    size={"large"}
+                    type="primary"
+                    onClick={handleOpenBlur}
+                  >Buka</Button>
+                </div>
+              )
+              }
+
             </div>
           )}
           {num == 0 && (
@@ -257,7 +280,7 @@ const App = () => {
           <Row type="flex" justify="center" align="top">
             {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
               <Col style={{ display: 'flex', paddingTop: 12, paddingRight: 18, flexDirection: 'row' }}>
-                <Card style={{ width: 150, height: 75, padding: 0 }}>
+                <Card style={{ width: 150, height: 75, padding: 0 }} loading={blur && value===num} >
                   {!confirmedWinnerList.includes(value) &&
                     <div class="actionIcon" onClick={() => handleConfirmWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
                       <CheckCircleTwoTone twoToneColor="#52c41a" />
