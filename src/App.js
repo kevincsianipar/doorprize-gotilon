@@ -19,22 +19,17 @@ const App = () => {
     {
       text: "Hadiah Hiburan 1",
       value: "hiburan1",
-      picks: 10
+      picks: 18
     },
     {
       text: "Hadiah Hiburan 2",
       value: "hiburan2",
-      picks: 10
+      picks: 18
     },
     {
-      text: "Hadiah Hiburan 3",
+      text: "Hadiah Hiburan Tambahan",
       value: "hiburan3",
-      picks: 10
-    },
-    {
-      text: "Hadiah Hiburan 4",
-      value: "hiburan4",
-      picks: 10
+      picks: 18
     },
     {
       text: "Hadiah Utama 3",
@@ -183,136 +178,138 @@ const App = () => {
       </Header>
       <Content className="site-layout" size='large' style={{ padding: '0px 50px', marginTop: 100 }}>
         <div className="site-layout-background" style={{ padding: 24, height: 'calc(100vh - 100px)' }}>
-          <Row gutter={12}>
-            <Col span={12}>
-              <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Kategori :
-                <Select defaultValue="hiburan1" style={{ width: 250, marginLeft: 12, fontSize: 24 }} onChange={handleChangeCategory}>
-                  {categoryOptions.map(cat => <Option value={cat.value} style={{ fontWeight: 600 }}>{cat.text}</Option>)}
-                </Select>
-              </h1>
-            </Col>
-            <Col span={12} style={{ textAlign: 'right', paddingTop: 4 }}>
-              <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Jumlah Pengambilan :
-                {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
-            </Col>
-          </Row>
-          <Row type="flex" justify="center" align="top">
-            <h1 style={{ fontSize: 26, lineHeight: 0.8, padding: 4 }}>Nomor Terpilih:</h1>
-          </Row>
-          {num > 0 && (
-            <div class="numbers">
-              <span class="numbers__window">
-                <span class="numbers__window__digit numbers__window__digit--0" data-fake="1234567890">0</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit numbers__window__digit--1" data-fake="2345678901">{renderCouponNumber(num).toString().charAt(1)}</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit numbers__window__digit--2" data-fake="3456789012">{renderCouponNumber(num).toString().charAt(2)}</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit numbers__window__digit--3" data-fake="5678901234">{renderCouponNumber(num).toString().charAt(3)}</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit numbers__window__digit--4" data-fake="6789012345">{renderCouponNumber(num).toString().charAt(4)}</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit numbers__window__digit--5" data-fake="7890123456">{renderCouponNumber(num).toString().charAt(5)}</span>
-              </span>
-              {blur && selectedCategory.includes('utama') && (
-                <div class="blur">
+          <Row>
+            <Col span={11}>
+              <Row gutter={12}>
+                <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Kategori :
+                  <Select defaultValue="hiburan1" style={{ width: 250, marginLeft: 12, fontSize: 24 }} onChange={handleChangeCategory}>
+                    {categoryOptions.map(cat => <Option value={cat.value} style={{ fontWeight: 600 }}>{cat.text}</Option>)}
+                  </Select>
+                </h1>
+              </Row>
+              <Row gutter={12}>
+                <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Jumlah Pengambilan :
+                  {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
+              </Row>
+              <Row type="flex" justify="center" align="top" style={{ marginTop: 32 }}>
+                <h1 style={{ fontSize: 26, lineHeight: 0.8, padding: 4 }}>Nomor Terpilih:</h1>
+              </Row>
+              {num > 0 && (
+                <div class="numbers">
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit numbers__window__digit--0" data-fake="1234567890">0</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit numbers__window__digit--1" data-fake="2345678901">{renderCouponNumber(num).toString().charAt(1)}</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit numbers__window__digit--2" data-fake="3456789012">{renderCouponNumber(num).toString().charAt(2)}</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit numbers__window__digit--3" data-fake="5678901234">{renderCouponNumber(num).toString().charAt(3)}</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit numbers__window__digit--4" data-fake="6789012345">{renderCouponNumber(num).toString().charAt(4)}</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit numbers__window__digit--5" data-fake="7890123456">{renderCouponNumber(num).toString().charAt(5)}</span>
+                  </span>
+                  {blur && selectedCategory.includes('utama') && (
+                    <div class="blur">
+                      <Button
+                        id="openBlur"
+                        disabled={!enableReset}
+                        className="openBlur"
+                        size={"large"}
+                        type="primary"
+                        onClick={handleOpenBlur}
+                      >Buka</Button>
+                    </div>
+                  )
+                  }
+                </div>
+              )}
+              {num == 0 && (
+                <div class="numbers">
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit" data-fake="1234567890">0</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit" data-fake="2345678901">0</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit" data-fake="3456789012">0</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit" data-fake="5678901234">0</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit" data-fake="6789012345">0</span>
+                  </span>
+                  <span class="numbers__window">
+                    <span class="numbers__window__digit" data-fake="7890123456">0</span>
+                  </span>
+                </div>
+              )}
+              <Row gutter={16} type="flex" justify="center" align="top">
+                <Col>
                   <Button
-                    id="openBlur"
-                    disabled={!enableReset}
-                    className="openBlur"
+                    id="getNumber"
                     size={"large"}
                     type="primary"
-                    onClick={handleOpenBlur}
-                  >Buka</Button>
-                </div>
-              )
-              }
-
-            </div>
-          )}
-          {num == 0 && (
-            <div class="numbers">
-              <span class="numbers__window">
-                <span class="numbers__window__digit" data-fake="1234567890">0</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit" data-fake="2345678901">0</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit" data-fake="3456789012">0</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit" data-fake="5678901234">0</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit" data-fake="6789012345">0</span>
-              </span>
-              <span class="numbers__window">
-                <span class="numbers__window__digit" data-fake="7890123456">0</span>
-              </span>
-            </div>
-          )}
-          <Row gutter={16} type="flex" justify="center" align="top">
-            <Col>
-              <Button
-                id="getNumber"
-                size={"large"}
-                type="primary"
-                onClick={handleClickGetNumber}
-                disabled={num > 0 ||
-                  winnerByCategory[selectedCategory] &&
-                  (winnerByCategory[selectedCategory].length >= categoryOptions.find(o => o.value === selectedCategory).picks)}>
-                Ambil Nomor (↵)
-              </Button>
+                    onClick={handleClickGetNumber}
+                    disabled={num > 0 ||
+                      winnerByCategory[selectedCategory] &&
+                      (winnerByCategory[selectedCategory].length >= categoryOptions.find(o => o.value === selectedCategory).picks)}>
+                    Ambil Nomor (↵)
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    id="resetButton"
+                    size={"large"}
+                    onClick={handleClickReset}
+                    type="danger"
+                    disabled={!enableReset || blur}>
+                    Reset (R)
+                  </Button>
+                </Col>
+              </Row>
             </Col>
-            <Col>
-              <Button
-                id="resetButton"
-                size={"large"}
-                onClick={handleClickReset}
-                type="danger"
-                disabled={!enableReset || blur}>
-                Reset (R)
-              </Button>
+            <Col span={13}>
+              <Row type="flex" justify="center" align="top">
+                <h1 style={{ paddingTop: 24, fontSize: 26, lineHeight: 0.8 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
+              </Row>
+              <Row type="flex" justify="center" align="top">
+                {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
+                  <Col style={{ display: 'flex', paddingTop: 12, paddingRight: 18, flexDirection: 'row' }}>
+                    <Card style={{ width: 150, height: 75, padding: 0 }} loading={selectedCategory.includes('utama') && blur && value === num} >
+                      {!confirmedWinnerList.includes(value) &&
+                        <div class="actionIcon" onClick={() => handleConfirmWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
+                          <CheckCircleTwoTone twoToneColor="#52c41a" />
+                        </div>
+                      }
+                      {confirmedWinnerList.includes(value) &&
+                        <div class="actionIcon" onClick={() => handleRemoveConfirmedWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
+                          <LeftSquareTwoTone twoToneColor="grey" />
+                        </div>
+                      }
+                      {!confirmedWinnerList.includes(value) &&
+                        <div class="actionIcon" onClick={() => handleRemoveNumber(value)} style={{ position: "absolute", top: 0, right: 4 }}>
+                          <CloseCircleTwoTone twoToneColor="#eb2f96" />
+                        </div>
+                      }
+                      <h1
+                        padding={0}
+                        style={{ fontSize: 38, fontWeight: 600, marginLeft: -12, marginTop: -15, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
+                        {renderCouponNumber(value)}
+                      </h1>
+                    </Card>
+                  </Col>
+                )}
+              </Row>
             </Col>
           </Row>
-          <Row type="flex" justify="center" align="top">
-            <h1 style={{ paddingTop: 24, fontSize: 26, lineHeight: 0.8 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
-          </Row>
-          <Row type="flex" justify="center" align="top">
-            {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
-              <Col style={{ display: 'flex', paddingTop: 12, paddingRight: 18, flexDirection: 'row' }}>
-                <Card style={{ width: 150, height: 75, padding: 0 }} loading={selectedCategory.includes('utama') && blur && value===num} >
-                  {!confirmedWinnerList.includes(value) &&
-                    <div class="actionIcon" onClick={() => handleConfirmWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
-                      <CheckCircleTwoTone twoToneColor="#52c41a" />
-                    </div>
-                  }
-                  {confirmedWinnerList.includes(value) &&
-                    <div class="actionIcon" onClick={() => handleRemoveConfirmedWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
-                      <LeftSquareTwoTone twoToneColor="grey" />
-                    </div>
-                  }
-                  {!confirmedWinnerList.includes(value) &&
-                    <div class="actionIcon" onClick={() => handleRemoveNumber(value)} style={{ position: "absolute", top: 0, right: 4 }}>
-                      <CloseCircleTwoTone twoToneColor="#eb2f96" />
-                    </div>
-                  }
-                  <h1
-                    padding={0}
-                    style={{ fontSize: 38, fontWeight: 600, marginLeft: -12, marginTop: -15, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
-                    {renderCouponNumber(value)}
-                  </h1>
-                </Card>
-              </Col>
-            )}
-          </Row>
-
         </div>
       </Content>
     </Layout>
