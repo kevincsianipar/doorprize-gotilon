@@ -34,7 +34,7 @@ const App = () => {
     {
       text: "Hadiah Utama 3",
       value: "utama3",
-      picks: 3
+      picks: 4
     },
     {
       text: "Hadiah Utama 2",
