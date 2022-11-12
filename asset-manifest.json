@@ -1,7 +1,7 @@
 {
-  "main.css": "/doorprize-randomizer/static/css/main.7c13a6df.chunk.css",
-  "main.js": "/doorprize-randomizer/static/js/main.1c4eaa8d.chunk.js",
-  "main.js.map": "/doorprize-randomizer/static/js/main.1c4eaa8d.chunk.js.map",
+  "main.css": "/doorprize-randomizer/static/css/main.d2e658eb.chunk.css",
+  "main.js": "/doorprize-randomizer/static/js/main.f4962233.chunk.js",
+  "main.js.map": "/doorprize-randomizer/static/js/main.f4962233.chunk.js.map",
   "static/js/1.f3964103.chunk.js": "/doorprize-randomizer/static/js/1.f3964103.chunk.js",
   "static/js/1.f3964103.chunk.js.map": "/doorprize-randomizer/static/js/1.f3964103.chunk.js.map",
   "static/css/2.e91112bf.chunk.css": "/doorprize-randomizer/static/css/2.e91112bf.chunk.css",
@@ -12,8 +12,8 @@
   "static/media/App.css": "/doorprize-randomizer/static/media/background.2eb615ba.png",
   "static/media/logohkbp.png": "/doorprize-randomizer/static/media/logohkbp.dfcdb3a3.png",
   "static/css/2.e91112bf.chunk.css.map": "/doorprize-randomizer/static/css/2.e91112bf.chunk.css.map",
-  "static/css/main.7c13a6df.chunk.css.map": "/doorprize-randomizer/static/css/main.7c13a6df.chunk.css.map",
+  "static/css/main.d2e658eb.chunk.css.map": "/doorprize-randomizer/static/css/main.d2e658eb.chunk.css.map",
   "index.html": "/doorprize-randomizer/index.html",
-  "precache-manifest.ab6d0c87265999de3d4b24011200b28c.js": "/doorprize-randomizer/precache-manifest.ab6d0c87265999de3d4b24011200b28c.js",
+  "precache-manifest.fc9bdae43d1429ff745f2acc10171796.js": "/doorprize-randomizer/precache-manifest.fc9bdae43d1429ff745f2acc10171796.js",
   "service-worker.js": "/doorprize-randomizer/service-worker.js"
 }
