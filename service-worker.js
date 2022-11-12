@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/doorprize-gotilon/precache-manifest.50abf4acd702bb55682f0513f59ba7ec.js"
+  "/doorprize-gotilon/precache-manifest.1abf4fa25373300824d2349af5c83340.js"
 );
 
 workbox.clientsClaim();

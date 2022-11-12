@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "841cf7c13fe6ab29bbe8",
+    "revision": "6b546985a09802b00dcc",
     "url": "/doorprize-gotilon/static/css/main.18dbf9f3.chunk.css"
   },
   {
-    "revision": "841cf7c13fe6ab29bbe8",
-    "url": "/doorprize-gotilon/static/js/main.841cf7c1.chunk.js"
+    "revision": "6b546985a09802b00dcc",
+    "url": "/doorprize-gotilon/static/js/main.6b546985.chunk.js"
   },
   {
     "revision": "f396410328fc823aed37",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/doorprize-gotilon/static/media/logohkbp.dfcdb3a3.png"
   },
   {
-    "revision": "91ecde7e187946942d57bacf94e0b607",
+    "revision": "e0da0ee640eedfce6eff501fc770713e",
     "url": "/doorprize-gotilon/index.html"
   }
 ];
