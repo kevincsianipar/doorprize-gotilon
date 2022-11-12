@@ -34,17 +34,20 @@ const App = () => {
     {
       text: "Hadiah Ketiga",
       value: "utama3",
-      picks: 4
+      picks: 4,
+      prize: "2 Unit Kipas Angin dan 2 Unit Rice Cooker"
     },
     {
       text: "Hadiah Kedua",
       value: "utama2",
-      picks: 2
+      picks: 2,
+      prize: "1 Unit Mesin Cuci dan 1 Unit Kulkas"
     },
     {
       text: "Hadiah Utama",
       value: "utama1",
-      picks: 1
+      picks: 1,
+      prize: "1 Unit Smart TV Samsung 50 Inch"
     }
   ];
 
@@ -197,10 +200,10 @@ const App = () => {
               {num > 0 && (
                 <div class="numbers">
                   <span class="numbers__window">
-                    <span class="numbers__window__digit numbers__window__digit--0" data-fake="1234567890">0</span>
+                    <span class="numbers__window__digit numbers__window__digit--0" data-fake="0000000000">0</span>
                   </span>
                   <span class="numbers__window">
-                    <span class="numbers__window__digit numbers__window__digit--1" data-fake="2345678901">{renderCouponNumber(num).toString().charAt(1)}</span>
+                    <span class="numbers__window__digit numbers__window__digit--1" data-fake="0120120120">{renderCouponNumber(num).toString().charAt(1)}</span>
                   </span>
                   <span class="numbers__window">
                     <span class="numbers__window__digit numbers__window__digit--2" data-fake="3456789012">{renderCouponNumber(num).toString().charAt(2)}</span>
@@ -232,10 +235,10 @@ const App = () => {
               {num == 0 && (
                 <div class="numbers">
                   <span class="numbers__window">
-                    <span class="numbers__window__digit" data-fake="1234567890">0</span>
+                    <span class="numbers__window__digit" data-fake="0000000000">0</span>
                   </span>
                   <span class="numbers__window">
-                    <span class="numbers__window__digit" data-fake="2345678901">0</span>
+                    <span class="numbers__window__digit" data-fake="0120120120">0</span>
                   </span>
                   <span class="numbers__window">
                     <span class="numbers__window__digit" data-fake="3456789012">0</span>
@@ -281,6 +284,15 @@ const App = () => {
                   {winnerByCategory[selectedCategory] && winnerByCategory[selectedCategory].length}
                 </h1>
               </Row>
+
+              {selectedCategory.includes('utama') && (
+                <Row gutter={12}>
+                  <h1 style={{ paddingTop: 24, fontSize: 26, lineHeight: 0.8 }}>Hadiah : {" "}
+                    {categoryOptions.find(o => o.value === selectedCategory).prize}
+                  </h1>
+                </Row>
+              )}
+
             </Col>
             <Col span={13}>
               <Row type="flex" justify="center" align="top">
@@ -309,11 +321,11 @@ const App = () => {
                         padding={0}
                         style={
                           {
-                            fontSize: 38,
+                            fontSize: 42,
                             fontWeight: 600,
-                            marginLeft: -12,
+                            marginLeft: -19,
                             marginTop: -15,
-                            color: confirmedWinnerList.includes(value) ? '#32CD32' : 'black'
+                            color: confirmedWinnerList.includes(value) ? '#008000' : 'black'
                           }
                         }>
                         {renderCouponNumber(value)}
