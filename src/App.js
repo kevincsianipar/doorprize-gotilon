@@ -27,7 +27,7 @@ const App = () => {
       picks: 18
     },
     {
-      text: "Hadiah Hiburan Tambahan",
+      text: "Hadiah Hiburan",
       value: "hiburan3",
       picks: 18
     },
@@ -177,7 +177,7 @@ const App = () => {
         </Col>
       </Header>
       <Content className="site-layout" size='large' style={{ padding: '0px 50px', marginTop: 100 }}>
-        <div className="site-layout-background" style={{ padding: 24, height: 'calc(100vh - 100px)' }}>
+        <div className="site-layout-background" style={{ padding: '24px 0px', height: 'calc(100vh - 100px)' }}>
           <Row>
             <Col span={11}>
               <Row gutter={12}>
@@ -192,7 +192,7 @@ const App = () => {
                   {categoryOptions.find(o => o.value === selectedCategory).picks}</h1>
               </Row>
               <Row type="flex" justify="center" align="top" style={{ marginTop: 32 }}>
-                <h1 style={{ fontSize: 26, lineHeight: 0.8, padding: 4 }}>Nomor Terpilih:</h1>
+                <h1 style={{ fontSize: 26, lineHeight: 0.8, padding: 4 }}>Nomor Kupon Terpilih:</h1>
               </Row>
               {num > 0 && (
                 <div class="numbers">
@@ -275,10 +275,16 @@ const App = () => {
                   </Button>
                 </Col>
               </Row>
+
+              <Row gutter={12}>
+                <h1 style={{ paddingTop: 46, fontSize: 26, lineHeight: 0.8 }}>Sudah Diambil :
+                  {winnerByCategory[selectedCategory] && winnerByCategory[selectedCategory].length}
+                </h1>
+              </Row>
             </Col>
             <Col span={13}>
               <Row type="flex" justify="center" align="top">
-                <h1 style={{ paddingTop: 24, fontSize: 26, lineHeight: 0.8 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
+                <h1 style={{ fontSize: 26, lineHeight: 0.8 }}>Daftar Pemenang {categoryOptions.find(o => o.value === selectedCategory).text}:</h1>
               </Row>
               <Row type="flex" justify="center" align="top">
                 {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
@@ -301,7 +307,15 @@ const App = () => {
                       }
                       <h1
                         padding={0}
-                        style={{ fontSize: 38, fontWeight: 600, marginLeft: -12, marginTop: -15, color: confirmedWinnerList.includes(value) ? 'forestgreen' : 'black' }}>
+                        style={
+                          {
+                            fontSize: 38,
+                            fontWeight: 600,
+                            marginLeft: -12,
+                            marginTop: -15,
+                            color: confirmedWinnerList.includes(value) ? '#32CD32' : 'black'
+                          }
+                        }>
                         {renderCouponNumber(value)}
                       </h1>
                     </Card>
