@@ -300,8 +300,8 @@ const App = () => {
               </Row>
               <Row type="flex" justify="center" align="top">
                 {winnerByCategory[selectedCategory] && (winnerByCategory[selectedCategory]).map(value =>
-                  <Col style={{ display: 'flex', paddingTop: 12, paddingRight: 18, flexDirection: 'row' }}>
-                    <Card style={{ width: 155, height: 75, padding: 0 }} loading={selectedCategory.includes('utama') && blur && value === num} >
+                  <Col style={{ display: 'flex', paddingTop: 10, paddingRight: 18, flexDirection: 'row' }}>
+                    <Card style={{ width: 184, height: 80, padding: 0 }} loading={selectedCategory.includes('utama') && blur && value === num} >
                       {!confirmedWinnerList.includes(value) &&
                         <div class="actionIcon" onClick={() => handleConfirmWinner(value)} style={{ position: "absolute", top: 0, left: 4 }}>
                           <CheckCircleTwoTone twoToneColor="#52c41a" />
@@ -321,10 +321,10 @@ const App = () => {
                         padding={0}
                         style={
                           {
-                            fontSize: 42,
-                            fontWeight: 650,
+                            fontSize: 52,
+                            fontWeight: 600,
                             marginLeft: -19,
-                            marginTop: -15,
+                            marginTop: -20,
                             color: confirmedWinnerList.includes(value) ? '#008000' : 'black'
                           }
                         }>
