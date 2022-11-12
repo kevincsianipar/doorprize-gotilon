@@ -1,7 +1,7 @@
 {
-  "main.css": "/doorprize-gotilon/static/css/main.60b8cf47.chunk.css",
-  "main.js": "/doorprize-gotilon/static/js/main.c3c9dde3.chunk.js",
-  "main.js.map": "/doorprize-gotilon/static/js/main.c3c9dde3.chunk.js.map",
+  "main.css": "/doorprize-gotilon/static/css/main.18dbf9f3.chunk.css",
+  "main.js": "/doorprize-gotilon/static/js/main.841cf7c1.chunk.js",
+  "main.js.map": "/doorprize-gotilon/static/js/main.841cf7c1.chunk.js.map",
   "static/js/1.f3964103.chunk.js": "/doorprize-gotilon/static/js/1.f3964103.chunk.js",
   "static/js/1.f3964103.chunk.js.map": "/doorprize-gotilon/static/js/1.f3964103.chunk.js.map",
   "static/css/2.7fd32d7c.chunk.css": "/doorprize-gotilon/static/css/2.7fd32d7c.chunk.css",
@@ -11,9 +11,9 @@
   "runtime~main.js.map": "/doorprize-gotilon/static/js/runtime~main.d4dbdc1f.js.map",
   "static/media/App.css": "/doorprize-gotilon/static/media/background.2eb615ba.png",
   "static/media/logohkbp.png": "/doorprize-gotilon/static/media/logohkbp.dfcdb3a3.png",
-  "static/css/main.60b8cf47.chunk.css.map": "/doorprize-gotilon/static/css/main.60b8cf47.chunk.css.map",
+  "static/css/main.18dbf9f3.chunk.css.map": "/doorprize-gotilon/static/css/main.18dbf9f3.chunk.css.map",
   "static/css/2.7fd32d7c.chunk.css.map": "/doorprize-gotilon/static/css/2.7fd32d7c.chunk.css.map",
   "index.html": "/doorprize-gotilon/index.html",
-  "precache-manifest.3abfe49c21104acfb85ed74f7c7ae8aa.js": "/doorprize-gotilon/precache-manifest.3abfe49c21104acfb85ed74f7c7ae8aa.js",
+  "precache-manifest.50abf4acd702bb55682f0513f59ba7ec.js": "/doorprize-gotilon/precache-manifest.50abf4acd702bb55682f0513f59ba7ec.js",
   "service-worker.js": "/doorprize-gotilon/service-worker.js"
 }
