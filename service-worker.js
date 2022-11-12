@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/doorprize-randomizer/precache-manifest.0bae5bc75f6d351c96fee1925643df70.js"
+  "/doorprize-randomizer/precache-manifest.fc9bdae43d1429ff745f2acc10171796.js"
 );
 
 workbox.clientsClaim();
