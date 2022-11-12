@@ -25,21 +25,21 @@
 .numbers {
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
-  font-size: 110px;
+  font-size: 130px;
   line-height: 1em;
   text-align: center;
   margin: auto;
   overflow: hidden;
   position: relative;
-  width: 420px;
+  width: 480px;
 }
 
 .blur {
   position: absolute;
-  width: 148px;
-  height: 110px;
+  width: 160px;
+  height: 136px;
   right: 0px;
-  top: 0px;
+  top: -4px;
   backdrop-filter: blur(22px);
   z-index: 1;
   text-align: center;
